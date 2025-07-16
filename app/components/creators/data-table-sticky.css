@@ -1,0 +1,46 @@
+/* Sticky table header styles */
+.data-table-container {
+  position: relative;
+  max-height: calc(100vh - 300px);
+  overflow: auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.data-table {
+  width: 100%;
+  caption-side: bottom;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: hsl(var(--background));
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: hsl(var(--background));
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 500;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.8125rem;
+}
+
+.data-table tbody tr {
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.data-table tbody tr:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.data-table tbody td {
+  padding: 0.75rem;
+}

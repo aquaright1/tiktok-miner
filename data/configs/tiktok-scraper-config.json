@@ -1,0 +1,27 @@
+{
+  "searchQueries": [
+    "AI recruiter",
+    "tech recruiter", 
+    "career coach AI",
+    "recruiting AI",
+    "tech career advisor"
+  ],
+  "profiles": [],
+  "hashtags": [],
+  "postURLs": [],
+  "resultsPerPage": 50,
+  "maxProfilesPerQuery": 50,
+  "minFollowers": 5000,
+  "excludePinnedPosts": true,
+  "profileScrapeSections": ["videos"],
+  "proxyCountryCode": "None",
+  "scrapeRelatedVideos": false,
+  "shouldDownloadAvatars": false,
+  "shouldDownloadCovers": false,
+  "shouldDownloadMusicCovers": false,
+  "shouldDownloadSlideshowImages": false,
+  "shouldDownloadSubtitles": false,
+  "shouldDownloadVideos": false,
+  "maxVideosPerProfile": 30,
+  "extendOutputFunction": "async ({ data, item, itemSpec, page, request, customData, Apify }) => {\n  const followerCount = item.authorMeta?.fans || 0;\n  if (followerCount < 5000) return null;\n  \n  const bio = (item.authorMeta?.signature || '').toLowerCase();\n  const keywords = ['ai', 'tech', 'career', 'recruiter', 'recruiting'];\n  const hasBioKeyword = keywords.some(keyword => bio.includes(keyword));\n  \n  if (hasBioKeyword) {\n    const videos = item.videos || [];\n    const recentVideos = videos.slice(0, 30);\n    \n    const totalLikes = recentVideos.reduce((sum, video) => sum + (video.stats?.digg || 0), 0);\n    const totalComments = recentVideos.reduce((sum, video) => sum + (video.stats?.comment || 0), 0);\n    const totalShares = recentVideos.reduce((sum, video) => sum + (video.stats?.share || 0), 0);\n    const totalPlays = recentVideos.reduce((sum, video) => sum + (video.stats?.play || 0), 0);\n    \n    item.engagementMetrics = {\n      totalLikes,\n      totalComments,\n      totalShares,\n      totalPlays,\n      videoCount: recentVideos.length,\n      avgLikesPerVideo: recentVideos.length > 0 ? Math.round(totalLikes / recentVideos.length) : 0,\n      avgCommentsPerVideo: recentVideos.length > 0 ? Math.round(totalComments / recentVideos.length) : 0,\n      avgSharesPerVideo: recentVideos.length > 0 ? Math.round(totalShares / recentVideos.length) : 0,\n      engagementRate: followerCount > 0 ? ((totalLikes + totalComments + totalShares) / followerCount * 100).toFixed(2) : 0\n    };\n    \n    return item;\n  }\n  return null;\n}"
+}

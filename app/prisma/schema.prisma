@@ -1,0 +1,846 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+
+
+
+
+
+model CreatorProfile {
+  id                      String   @id @default(uuid())
+  
+  // Basic Information
+  name                    String
+  email                   String?
+  bio                     String?  @db.Text
+  profileImageUrl         String?
+  category                String?  // e.g., "tech", "lifestyle", "gaming"
+  tags                    String[] @default([])
+  isVerified              Boolean  @default(false)
+  
+  // Platform Identifiers
+  platformIdentifiers     Json     // {youtube_channel_id, twitter_handle, instagram_username, tiktok_username}
+  
+  // Calculated Metrics
+  compositeEngagementScore Float?   // Calculated across all platforms
+  totalReach              Int      @default(0) // Sum of followers across platforms
+  averageEngagementRate   Float?   // Weighted average across platforms
+  contentFrequency        Float?   // Posts per week across platforms
+  audienceQualityScore    Float?   // 0-100 score based on fake follower detection
+  
+  // Status
+  lastSync                DateTime @default(now())
+  syncStatus              SyncStatus @default(PENDING)
+  
+  // Relations
+  youtubeMetrics          YoutubeMetrics?
+  twitterMetrics          TwitterMetrics?
+  instagramMetrics        InstagramMetrics?
+  tiktokMetrics           TiktokMetrics?
+  metricsHistory          CreatorMetricsHistory[]
+  engagementAnalytics     EngagementAnalytics[]
+  
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  
+  @@index([category])
+  @@index([compositeEngagementScore])
+  @@index([totalReach])
+}
+
+// Platform-Specific Metrics Tables
+
+model YoutubeMetrics {
+  id                String   @id @default(uuid())
+  creatorProfileId  String   @unique
+  channelId         String   @unique
+  
+  // Basic Metrics
+  subscriberCount   Int      @default(0)
+  videoCount        Int      @default(0)
+  viewCount         BigInt   @default(0)
+  
+  // Engagement Metrics
+  averageViews      Int      @default(0)
+  averageLikes      Int      @default(0)
+  averageComments   Int      @default(0)
+  engagementRate    Float    @default(0)
+  
+  // Channel Details
+  channelName       String
+  channelUrl        String
+  description       String?  @db.Text
+  country           String?
+  customUrl         String?
+  publishedAt       DateTime?
+  
+  // Additional Metrics
+  uploadsPlaylistId String?
+  dailyViewGrowth   Float?
+  dailySubGrowth    Float?
+  
+  lastSync          DateTime @default(now())
+  creatorProfile    CreatorProfile @relation(fields: [creatorProfileId], references: [id])
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@index([subscriberCount])
+  @@index([engagementRate])
+}
+
+model TwitterMetrics {
+  id                String   @id @default(uuid())
+  creatorProfileId  String   @unique
+  userId            String   @unique
+  
+  // Basic Metrics
+  followerCount     Int      @default(0)
+  followingCount    Int      @default(0)
+  tweetCount        Int      @default(0)
+  listedCount       Int      @default(0)
+  
+  // Engagement Metrics
+  averageLikes      Float    @default(0)
+  averageRetweets   Float    @default(0)
+  averageReplies    Float    @default(0)
+  engagementRate    Float    @default(0)
+  
+  // Profile Details
+  username          String   @unique
+  displayName       String
+  profileUrl        String
+  bio               String?  @db.Text
+  location          String?
+  website           String?
+  isVerified        Boolean  @default(false)
+  joinedAt          DateTime?
+  
+  // Additional Metrics
+  impressions       Int?     @default(0)
+  profileViews      Int?     @default(0)
+  
+  lastSync          DateTime @default(now())
+  creatorProfile    CreatorProfile @relation(fields: [creatorProfileId], references: [id])
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@index([followerCount])
+  @@index([engagementRate])
+  @@index([username])
+}
+
+model InstagramMetrics {
+  id                String   @id @default(uuid())
+  creatorProfileId  String   @unique
+  accountId         String   @unique
+  
+  // Basic Metrics
+  followerCount     Int      @default(0)
+  followingCount    Int      @default(0)
+  mediaCount        Int      @default(0)
+  
+  // Engagement Metrics
+  averageLikes      Float    @default(0)
+  averageComments   Float    @default(0)
+  engagementRate    Float    @default(0)
+  
+  // Profile Details
+  username          String   @unique
+  fullName          String?
+  profileUrl        String
+  bio               String?  @db.Text
+  website           String?
+  isVerified        Boolean  @default(false)
+  isBusinessAccount Boolean  @default(false)
+  businessCategory  String?
+  
+  // Business Insights (if available)
+  reach             Int?     @default(0)
+  impressions       Int?     @default(0)
+  profileViews      Int?     @default(0)
+  websiteClicks     Int?     @default(0)
+  
+  lastSync          DateTime @default(now())
+  creatorProfile    CreatorProfile @relation(fields: [creatorProfileId], references: [id])
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@index([followerCount])
+  @@index([engagementRate])
+  @@index([username])
+}
+
+model TiktokMetrics {
+  id                String   @id @default(uuid())
+  creatorProfileId  String   @unique
+  userId            String   @unique
+  
+  // Basic Metrics
+  followerCount     Int      @default(0)
+  followingCount    Int      @default(0)
+  videoCount        Int      @default(0)
+  heartCount        BigInt   @default(0) // Total likes across all videos
+  
+  // Engagement Metrics
+  averageViews      Int      @default(0)
+  averageLikes      Int      @default(0)
+  averageComments   Int      @default(0)
+  averageShares     Int      @default(0)
+  engagementRate    Float    @default(0)
+  
+  // Profile Details
+  username          String   @unique
+  nickname          String?
+  profileUrl        String
+  bio               String?  @db.Text
+  isVerified        Boolean  @default(false)
+  
+  // Additional Metrics
+  totalViews        BigInt   @default(0)
+  dailyViewGrowth   Float?
+  dailyFollowerGrowth Float?
+  
+  lastSync          DateTime @default(now())
+  creatorProfile    CreatorProfile @relation(fields: [creatorProfileId], references: [id])
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@index([followerCount])
+  @@index([engagementRate])
+  @@index([username])
+}
+
+
+
+
+
+
+
+ 
+
+model User {
+  id                String           @id
+  email             String           @unique
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  apiUsage          ApiUsage[]
+}
+
+
+enum SyncStatus {
+  PENDING
+  SYNCING
+  COMPLETED
+  FAILED
+  RATE_LIMITED
+}
+
+model ApiUsage {
+  id                String      @id @default(uuid())
+  platform          String      // OpenAI, Anthropic, Google, etc.
+  model             String?     // gpt-4, claude-3, etc.
+  endpoint          String      // API endpoint called
+  timestamp         DateTime    @default(now())
+  tokensUsed        Int?        @default(0)
+  cost              Float       @default(0)
+  userId            String?
+  requestId         String?     @unique
+  responseTime      Int?        // Response time in milliseconds
+  statusCode        Int?        // HTTP status code
+  error             String?     @db.Text
+  metadata          Json?       // Additional metadata
+  createdAt         DateTime    @default(now())
+  
+  user              User?       @relation(fields: [userId], references: [id])
+  
+  @@index([platform, timestamp])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model ApiLimit {
+  id                String      @id @default(uuid())
+  platform          String
+  model             String?
+  rateLimitHourly   Int?        // Requests per hour
+  rateLimitDaily    Int?        // Requests per day
+  tokenLimitHourly  Int?        // Tokens per hour
+  tokenLimitDaily   Int?        // Tokens per day
+  isActive          Boolean     @default(true)
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  
+  @@unique([platform, model])
+  @@index([platform])
+}
+
+model ApiPricing {
+  id                String      @id @default(uuid())
+  platform          String
+  model             String
+  pricePerToken     Float       // Price per token in USD
+  pricePerRequest   Float?      // Price per request if applicable
+  pricingTier       String?     // Free, standard, premium, etc.
+  isActive          Boolean     @default(true)
+  effectiveFrom     DateTime    @default(now())
+  effectiveTo       DateTime?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  
+  @@unique([platform, model, effectiveFrom])
+  @@index([platform, model])
+}
+
+model ApiAlert {
+  id                String      @id @default(uuid())
+  platform          String
+  alertType         ApiAlertType
+  threshold         Float       // Percentage threshold (e.g., 80 for 80%)
+  message           String      @db.Text
+  isResolved        Boolean     @default(false)
+  resolvedAt        DateTime?
+  metadata          Json?       // Additional alert context
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  
+  @@index([platform, alertType, isResolved])
+  @@index([createdAt])
+}
+
+enum ApiAlertType {
+  RATE_LIMIT_WARNING
+  RATE_LIMIT_CRITICAL
+  COST_WARNING
+  COST_CRITICAL
+  ERROR_RATE_HIGH
+}
+
+
+// Time-Series Models for TimescaleDB
+
+model CreatorMetricsHistory {
+  id                String   @id @default(uuid())
+  creatorProfileId  String
+  platform          String   // youtube, twitter, instagram, tiktok
+  timestamp         DateTime @default(now())
+  
+  // Snapshot of metrics at this point in time
+  followerCount     Int      @default(0)
+  engagementRate    Float    @default(0)
+  totalPosts        Int      @default(0)
+  avgLikes          Float    @default(0)
+  avgComments       Float    @default(0)
+  avgShares         Float    @default(0)
+  avgViews          Float    @default(0)
+  
+  // Growth metrics
+  followerGrowth    Int      @default(0) // Change since last snapshot
+  engagementGrowth  Float    @default(0) // Change in engagement rate
+  
+  // Additional platform-specific metrics stored as JSON
+  platformMetrics   Json?
+  
+  creatorProfile    CreatorProfile @relation(fields: [creatorProfileId], references: [id])
+  
+  @@index([creatorProfileId, timestamp])
+  @@index([platform, timestamp])
+  @@index([timestamp])
+}
+
+model EngagementAnalytics {
+  id                String   @id @default(uuid())
+  creatorProfileId  String
+  timestamp         DateTime @default(now())
+  
+  // Hourly engagement aggregates
+  hourlyLikes       Int      @default(0)
+  hourlyComments    Int      @default(0)
+  hourlyShares      Int      @default(0)
+  hourlyViews       Int      @default(0)
+  hourlyPosts       Int      @default(0)
+  
+  // Peak engagement times
+  peakEngagementHour Int?    // 0-23 UTC
+  peakEngagementDay  Int?    // 0-6 (Sunday-Saturday)
+  
+  // Content performance
+  topPerformingContentIds String[] @default([]) // Array of content IDs
+  avgContentScore   Float    @default(0) // Average performance score
+  
+  // Audience activity patterns
+  audienceActivityPattern Json? // Heatmap data for audience activity
+  
+  creatorProfile    CreatorProfile @relation(fields: [creatorProfileId], references: [id])
+  
+  @@index([creatorProfileId, timestamp])
+  @@index([timestamp])
+  @@index([peakEngagementHour])
+}
+
+model PlatformAuth {
+  id                String    @id @default(uuid())
+  userId            String
+  platform          String    // instagram, twitter, youtube, tiktok
+  accessToken       String    @db.Text
+  refreshToken      String?   @db.Text
+  expiresAt         DateTime?
+  platformUserId    String?   // Platform-specific user ID
+  metadata          Json?     // Additional platform-specific data
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  @@unique([userId, platform])
+  @@index([userId])
+  @@index([platform])
+}
+
+model OAuthSession {
+  id                String    @id @default(uuid())
+  platform          String    // instagram, twitter, etc.
+  state             String    // OAuth state parameter
+  codeVerifier      String?   // PKCE code verifier if used
+  userId            String    // User initiating the OAuth flow
+  expiresAt         DateTime  // Session expiration
+  createdAt         DateTime  @default(now())
+  
+  @@index([state])
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model ApiCache {
+  id                String    @id @default(uuid())
+  key               String    @unique
+  data              Json
+  expiresAt         DateTime
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  @@index([key])
+  @@index([expiresAt])
+}
+
+model WebhookEvent {
+  id                String    @id @default(uuid())
+  externalId        String    @unique // External webhook ID or unique identifier
+  provider          String    // e.g., 'apify', 'twitter', etc.
+  eventType         String    // e.g., 'ACTOR.RUN.SUCCEEDED'
+  payload           Json      // Raw webhook payload
+  headers           Json?     // Optional: store headers for debugging
+  status            WebhookStatus @default(pending)
+  error             String?   @db.Text
+  attempts          Int       @default(0)
+  maxAttempts       Int       @default(3)
+  receivedAt        DateTime  @default(now())
+  processedAt       DateTime?
+  nextRetryAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  @@index([provider])
+  @@index([eventType])
+  @@index([status])
+  @@index([externalId])
+  @@index([receivedAt])
+  @@index([nextRetryAt])
+}
+
+enum WebhookStatus {
+  pending
+  processing
+  completed
+  failed
+  dead_letter
+}
+
+model ApifyRunMetrics {
+  id                String    @id @default(uuid())
+  actorId           String
+  platform          String    // instagram, tiktok, youtube, twitter
+  status            String    // RUNNING, SUCCEEDED, FAILED, TIMED_OUT, ABORTED
+  startedAt         DateTime
+  finishedAt        DateTime?
+  duration          Int?      // Duration in milliseconds
+  datasetItemCount  Int?      // Number of items in dataset
+  costUsd           Float?    // Cost in USD
+  memoryUsage       Int?      // Memory usage in MB
+  cpuUsage          Float?    // CPU usage percentage
+  errorMessage      String?   @db.Text
+  metadata          Json?     // Additional run metadata
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  @@index([platform])
+  @@index([status])
+  @@index([startedAt])
+  @@index([actorId])
+}
+
+model ApifyDataQualityMetrics {
+  id                  String    @id @default(uuid())
+  platform            String    // instagram, tiktok, youtube, twitter
+  totalItemsProcessed Int       @default(0)
+  validItemsCount     Int       @default(0)
+  invalidItemsCount   Int       @default(0)
+  duplicateItemsCount Int       @default(0)
+  validationErrors    Json?     // Array of validation error details
+  measuredAt          DateTime  @default(now())
+  
+  @@index([platform])
+  @@index([measuredAt])
+}
+
+model ApifyAlert {
+  id           String    @id @default(uuid())
+  platform     String    // instagram, tiktok, youtube, twitter, or 'global'
+  severity     String    // LOW, MEDIUM, HIGH, CRITICAL
+  alertType    String    // FAILURE_RATE, COST_SPIKE, DATA_QUALITY, NO_RUNS, etc.
+  message      String    @db.Text
+  conditions   Json      // Alert conditions that triggered this alert
+  isResolved   Boolean   @default(false)
+  triggeredAt  DateTime  @default(now())
+  resolvedAt   DateTime?
+  metadata     Json?     // Additional alert metadata
+  
+  @@index([platform])
+  @@index([severity])
+  @@index([isResolved])
+  @@index([triggeredAt])
+}
+
+model ApifyAlertConfig {
+  id            String    @id @default(uuid())
+  name          String
+  platform      String?   // null for global alerts
+  conditions    Json      // Alert conditions configuration
+  isEnabled     Boolean   @default(true)
+  notifications Json      // Email, webhook, slack configuration
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([platform])
+  @@index([isEnabled])
+}
+
+// Budget Management Models (Task 10)
+
+model Budget {
+  id                String         @id @default(uuid())
+  name              String         // Budget name (e.g., "Monthly API Budget", "Q1 Scraping Budget")
+  description       String?        @db.Text
+  budgetType        BudgetType     // MONTHLY, QUARTERLY, YEARLY, PROJECT
+  totalAmount       Float          // Total budget amount in USD
+  spentAmount       Float          @default(0) // Amount already spent
+  remainingAmount   Float          @default(0) // Remaining budget amount
+  startDate         DateTime       // Budget period start
+  endDate           DateTime       // Budget period end
+  status            BudgetStatus   @default(ACTIVE)
+  alertThreshold80  Boolean        @default(true)  // Alert at 80% spent
+  alertThreshold90  Boolean        @default(true)  // Alert at 90% spent
+  alertThreshold100 Boolean        @default(true)  // Alert at 100% spent
+  autoRenewal       Boolean        @default(false) // Auto-renew for next period
+  createdBy         String?        // User ID who created the budget
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  
+  // Relations
+  budgetAllocations BudgetAllocation[]
+  budgetAlerts      BudgetAlert[]
+  costAllocations   CostAllocation[]
+  
+  @@index([budgetType])
+  @@index([status])
+  @@index([startDate, endDate])
+  @@index([createdAt])
+}
+
+model BudgetAllocation {
+  id              String           @id @default(uuid())
+  budgetId        String
+  platform        String           // API, Apify, or specific platform
+  serviceType     ServiceType      // API, SCRAPING, STORAGE, etc.
+  allocatedAmount Float            // Amount allocated to this service
+  spentAmount     Float            @default(0)
+  remainingAmount Float            @default(0)
+  priority        AllocationPriority @default(MEDIUM)
+  isActive        Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  // Relations
+  budget          Budget           @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  
+  @@index([budgetId])
+  @@index([platform])
+  @@index([serviceType])
+  @@index([isActive])
+}
+
+model CostAllocation {
+  id              String         @id @default(uuid())
+  budgetId        String
+  platform        String         // API platform or Apify
+  serviceType     ServiceType    // API, SCRAPING, STORAGE, etc.
+  costAmount      Float          // Cost amount in USD
+  description     String?        // Cost description
+  costDate        DateTime       // When the cost was incurred
+  apiUsageId      String?        // Link to ApiUsage record
+  apifyRunId      String?        // Link to ApifyRunMetrics record
+  metadata        Json?          // Additional cost metadata
+  createdAt       DateTime       @default(now())
+  
+  // Relations
+  budget          Budget         @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  
+  @@index([budgetId])
+  @@index([platform])
+  @@index([serviceType])
+  @@index([costDate])
+  @@index([apiUsageId])
+  @@index([apifyRunId])
+}
+
+model BudgetAlert {
+  id              String         @id @default(uuid())
+  budgetId        String
+  alertType       BudgetAlertType
+  threshold       Float          // Threshold percentage (80, 90, 100)
+  currentSpent    Float          // Current spent amount when alert triggered
+  budgetTotal     Float          // Total budget amount
+  message         String         @db.Text
+  isResolved      Boolean        @default(false)
+  resolvedAt      DateTime?
+  notificationSent Boolean       @default(false)
+  metadata        Json?          // Additional alert metadata
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  
+  // Relations
+  budget          Budget         @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  
+  @@index([budgetId])
+  @@index([alertType])
+  @@index([isResolved])
+  @@index([createdAt])
+}
+
+model CostOptimization {
+  id                String               @id @default(uuid())
+  platform          String               // Platform being optimized
+  serviceType       ServiceType          // Service type being optimized
+  optimizationType  OptimizationType     // REDUCE_FREQUENCY, CHANGE_TIER, etc.
+  currentCost       Float                // Current monthly cost
+  projectedCost     Float                // Projected cost after optimization
+  potentialSavings  Float                // Potential monthly savings
+  recommendation    String               @db.Text
+  impact            OptimizationImpact   // LOW, MEDIUM, HIGH impact on functionality
+  status            OptimizationStatus   @default(PENDING)
+  implementedAt     DateTime?
+  validUntil        DateTime             // When this recommendation expires
+  metadata          Json?                // Additional optimization data
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  
+  @@index([platform])
+  @@index([serviceType])
+  @@index([status])
+  @@index([potentialSavings])
+  @@index([createdAt])
+}
+
+model CostForecast {
+  id                String         @id @default(uuid())
+  platform          String         // Platform being forecasted
+  serviceType       ServiceType    // Service type being forecasted
+  forecastPeriod    ForecastPeriod // WEEKLY, MONTHLY, QUARTERLY
+  currentCost       Float          // Current period cost
+  forecastedCost    Float          // Forecasted cost
+  confidence        Float          // Confidence level (0-100)
+  basedOnDays       Int            // Number of days of data used
+  trendDirection    TrendDirection // INCREASING, DECREASING, STABLE
+  seasonality       Json?          // Seasonal patterns if any
+  forecastDate      DateTime       // Date when forecast was generated
+  validUntil        DateTime       // When this forecast expires
+  metadata          Json?          // Additional forecast metadata
+  createdAt         DateTime       @default(now())
+  
+  @@index([platform])
+  @@index([serviceType])
+  @@index([forecastPeriod])
+  @@index([forecastDate])
+  @@index([validUntil])
+}
+
+// Enums for Budget Management
+
+enum BudgetType {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+  PROJECT
+  UNLIMITED
+}
+
+enum BudgetStatus {
+  ACTIVE
+  PAUSED
+  EXCEEDED
+  EXPIRED
+  CANCELLED
+}
+
+enum ServiceType {
+  API
+  SCRAPING
+  STORAGE
+  PROCESSING
+  MONITORING
+  OTHER
+}
+
+enum AllocationPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum BudgetAlertType {
+  THRESHOLD_80
+  THRESHOLD_90
+  THRESHOLD_100
+  BUDGET_EXCEEDED
+  SPENDING_SPIKE
+  LOW_BUDGET
+  ALLOCATION_DEPLETED
+}
+
+enum OptimizationType {
+  REDUCE_FREQUENCY
+  CHANGE_TIER
+  OPTIMIZE_TIMING
+  CONSOLIDATE_REQUESTS
+  CACHE_OPTIMIZATION
+  ALTERNATIVE_PROVIDER
+  RESOURCE_SCALING
+}
+
+enum OptimizationImpact {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum OptimizationStatus {
+  PENDING
+  APPROVED
+  IMPLEMENTED
+  REJECTED
+  EXPIRED
+}
+
+enum ForecastPeriod {
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum TrendDirection {
+  INCREASING
+  DECREASING
+  STABLE
+  VOLATILE
+}
+
+// Instagram Profiles table for pipeline discovery
+model InstagramProfile {
+  id                String   @id @default(uuid())
+  username          String   @unique
+  fullName          String?
+  bio               String?  @db.Text
+  profilePictureUrl String?
+  profileUrl        String?
+  isVerified        Boolean  @default(false)
+  isBusinessAccount Boolean  @default(false)
+  businessCategory  String?
+  followerCount     Int      @default(0)
+  followingCount    Int      @default(0)
+  postsCount        Int      @default(0)
+  
+  // 30-day engagement metrics
+  posts30d          Int      @default(0)
+  likesTotal30d     Int      @default(0)
+  likesAvg30d       Float    @default(0)
+  commentsTotal30d  Int      @default(0)
+  commentsAvg30d    Float    @default(0)
+  viewsTotal30d     BigInt   @default(0)
+  viewsAvg30d       Float    @default(0)
+  sharesTotal30d    Int      @default(0)  // Placeholder for future enrichment
+  engagementRate30d Float    @default(0)
+  
+  // Discovery metadata
+  discoveredAt      DateTime @default(now())
+  discoveryKeywords String[] @default([])
+  lastMetricsUpdate DateTime @default(now())
+  
+  // Pipeline tracking
+  pipelineId        String?
+  datasetId         String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@index([username])
+  @@index([followerCount])
+  @@index([engagementRate30d])
+  @@index([discoveredAt])
+  @@index([pipelineId])
+}
+
+// TikTok Profiles table for 30-day engagement metrics
+model TiktokProfile {
+  username        String   @id // Primary key is username
+  posts30d        Int      @map("posts_30d")
+  likesTotal      Int      @map("likes_total")
+  commentsTotal   Int      @map("comments_total")
+  viewsTotal      BigInt   @map("views_total")
+  sharesTotal     Int      @map("shares_total")
+  
+  // Profile information
+  nickName        String?  @map("nick_name")
+  avatar          String?
+  signature       String?  @db.Text // bio
+  verified        Boolean  @default(false)
+  followerCount   Int      @default(0) @map("follower_count")
+  followingCount  Int      @default(0) @map("following_count")
+  totalHearts     BigInt   @default(0) @map("total_hearts") // lifetime hearts
+  totalVideos     Int      @default(0) @map("total_videos") // lifetime videos
+  
+  // Calculated metrics
+  avgLikesPerPost Float    @default(0) @map("avg_likes_per_post")
+  avgCommentsPerPost Float @default(0) @map("avg_comments_per_post")
+  avgViewsPerPost Float    @default(0) @map("avg_views_per_post")
+  avgSharesPerPost Float   @default(0) @map("avg_shares_per_post")
+  engagementRate  Float    @default(0) @map("engagement_rate")
+  
+  // Discovery metadata
+  category        String?  // Search keyword used for discovery
+  
+  // Additional metadata
+  profileUrl      String?  @map("profile_url")
+  lastUpdated     DateTime @default(now()) @updatedAt
+  
+  @@map("tiktok_profiles")
+}

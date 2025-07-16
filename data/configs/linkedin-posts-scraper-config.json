@@ -1,0 +1,78 @@
+{
+  "name": "LinkedIn Posts Scraper Configuration",
+  "description": "Configuration for scraping LinkedIn posts with engagement metrics (likes, comments, shares, reactions) for the last 30 days",
+  "actorId": "curious_coder/linkedin-post-search-scraper",
+  "version": "0.1.0",
+  "input": {
+    "startUrls": [],
+    "searchKeywords": "",
+    "maxPosts": 500,
+    "includeComments": true,
+    "includeReactions": true,
+    "maxCommentsPerPost": 50,
+    "sortBy": "date_posted",
+    "dateRange": "past-month",
+    "postTypes": ["all"],
+    "extendOutputFunction": "({ data, item }) => {\n  const now = new Date();\n  const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));\n  const postDate = new Date(item.postedAt || item.timestamp || item.date);\n  \n  // Only include posts from last 30 days\n  if (postDate < thirtyDaysAgo) {\n    return null;\n  }\n  \n  return {\n    ...item,\n    platform: 'linkedin',\n    scrapedAt: new Date().toISOString(),\n    engagementMetrics: {\n      likes: item.likeCount || item.reactions?.like || 0,\n      comments: item.commentCount || item.commentsCount || 0,\n      shares: item.shareCount || item.repostCount || 0,\n      reactions: {\n        like: item.reactions?.like || 0,\n        love: item.reactions?.love || 0,\n        support: item.reactions?.support || 0,\n        celebrate: item.reactions?.celebrate || 0,\n        insight: item.reactions?.insight || 0,\n        funny: item.reactions?.funny || 0,\n        total: item.totalReactions || 0\n      },\n      engagementRate: item.totalReactions && item.authorFollowersCount ? \n        (item.totalReactions / item.authorFollowersCount) * 100 : 0\n    },\n    postMetrics: {\n      content: item.text || item.content || '',\n      type: item.postType || 'post',\n      hasImage: item.hasImage || false,\n      hasVideo: item.hasVideo || false,\n      hasDocument: item.hasDocument || false,\n      hasLink: item.hasLink || false,\n      hashtags: item.hashtags || [],\n      mentions: item.mentions || [],\n      links: item.links || [],\n      mediaUrls: item.mediaUrls || []\n    },\n    authorMetrics: {\n      name: item.authorName || '',\n      headline: item.authorHeadline || '',\n      profileUrl: item.authorProfileUrl || '',\n      company: item.authorCompany || '',\n      location: item.authorLocation || '',\n      followersCount: item.authorFollowersCount || 0,\n      connectionsCount: item.authorConnectionsCount || 0,\n      isInfluencer: item.isInfluencer || false\n    },\n    dateRange: {\n      startDate: thirtyDaysAgo.toISOString(),\n      endDate: now.toISOString()\n    }\n  };\n}",
+    "proxyConfiguration": {
+      "useApifyProxy": true,\n      "apifyProxyGroups": ["RESIDENTIAL"]\n    }
+  },
+  "runOptions": {
+    "timeoutSecs": 3600,
+    "memoryMbytes": 1024,
+    "maxItems": 1000
+  },
+  "webhooks": [],
+  "metadata": {
+    "platform": "linkedin",
+    "dataTypes": ["posts", "engagement", "metrics", "reactions"],
+    "timeframe": "last_30_days",
+    "updateFrequency": "daily"
+  },
+  "examples": {
+    "searchByKeyword": {
+      "searchKeywords": "artificial intelligence",
+      "maxPosts": 100,
+      "sortBy": "date_posted"
+    },
+    "searchByHashtag": {
+      "searchKeywords": "#digitalmarketing",
+      "maxPosts": 50,
+      "includeReactions": true
+    },
+    "searchByCompany": {
+      "searchKeywords": "company:microsoft",
+      "maxPosts": 75,
+      "includeComments": true
+    },
+    "profilePosts": {
+      "startUrls": [
+        "https://www.linkedin.com/in/username/",
+        "https://www.linkedin.com/company/company-name/"
+      ],
+      "maxPosts": 30,
+      "includeReactions": true,
+      "includeComments": true
+    },
+    "advancedSearch": {
+      "searchKeywords": "machine learning AND (python OR tensorflow)",
+      "maxPosts": 200,
+      "sortBy": "relevance",
+      "dateRange": "past-week"
+    }
+  },
+  "alternativeActors": {
+    "profilePosts": {
+      "actorId": "apimaestro/linkedin-profile-posts",
+      "description": "Alternative actor for scraping posts from specific LinkedIn profiles"
+    },
+    "bulkScraper": {
+      "actorId": "harvestapi/linkedin-profile-posts",
+      "description": "Bulk scraper for LinkedIn profile posts, $2 per 1k posts"
+    },
+    "searchScraper": {
+      "actorId": "apimaestro/linkedin-posts-search-scraper-no-cookies",
+      "description": "Search scraper that doesn't require cookies/login"
+    }
+  }
+}

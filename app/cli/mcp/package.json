@@ -1,0 +1,21 @@
+{
+  "name": "tiktok-miner-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "bun build index.ts --outdir build --target node",
+    "start": "dotenv -e ../../.env -- node build/index.js",
+    "start:inspect": "dotenv -e ../../.env -- npx @modelcontextprotocol/inspector node build/index.js",
+    "dev": "bun run index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.23.5",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0"
+  }
+}

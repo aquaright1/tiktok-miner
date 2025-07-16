@@ -1,0 +1,114 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Misc
+.DS_Store
+*.pem
+tsconfig.tsbuildinfo
+tsconfig.cli.tsbuildinfo
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+app/.env
+app/.env.*
+!app/.env.example
+
+# API Keys files (never commit these!)
+.cursor
+app/api-keys.ts
+api-keys.ts
+
+# Vercel
+.vercel
+
+# Prisma
+app/prisma/*.db
+app/prisma/*.db-journal
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+.cursor/rules
+.github/workflows/
+*.swp
+*.swo
+
+# Bun
+bun.lockb
+
+# Project specific
+debug-*.log
+temp/
+
+# Local development
+.aider*
+app/results/
+backups/
+.qodo
+
+# Logs
+logs
+logs/
+.logs/
+*.log
+dev-debug.log
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+
+.mcp.json
+
+# Dependency directories
+# Environment variables
+
+# Task files
+# tasks.json
+# tasks/ 
+
+# API Keys and Secrets
+.env
+.env.local
+.env.production
+.env.development
+api-keys.ts
+**/api-keys.ts
+**/*secret*
+**/*key*
+**/*token*
+
+# Environment and Config
+config/production.ts
+config/secrets.ts 

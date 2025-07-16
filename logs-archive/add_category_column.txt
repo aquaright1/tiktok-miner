@@ -1,0 +1,1044 @@
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+TypeError [ERR_INVALID_STATE]: Invalid state: Controller is already closed
+    at new NodeError (node:internal/errors:405:5)
+    at ReadableStreamDefaultController.enqueue (node:internal/webstreams/readablestream:1045:13)
+    at eval (webpack-internal:///(rsc)/./app/api/scraper/run-pipeline/route.ts:87:44)
+    at Array.forEach (<anonymous>)
+    at Socket.eval (webpack-internal:///(rsc)/./app/api/scraper/run-pipeline/route.ts:86:35)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:128:17) {
+  code: 'ERR_INVALID_STATE'
+}
+ ⨯ uncaughtException: TypeError [ERR_INVALID_STATE]: Invalid state: Controller is already closed
+    at new NodeError (node:internal/errors:405:5)
+    at ReadableStreamDefaultController.enqueue (node:internal/webstreams/readablestream:1045:13)
+    at eval (webpack-internal:///(rsc)/./app/api/scraper/run-pipeline/route.ts:87:44)
+    at Array.forEach (<anonymous>)
+    at Socket.eval (webpack-internal:///(rsc)/./app/api/scraper/run-pipeline/route.ts:86:35)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:128:17) {
+  code: 'ERR_INVALID_STATE'
+}
+ ⨯ uncaughtException: TypeError [ERR_INVALID_STATE]: Invalid state: Controller is already closed
+    at new NodeError (node:internal/errors:405:5)
+    at ReadableStreamDefaultController.enqueue (node:internal/webstreams/readablestream:1045:13)
+    at eval (webpack-internal:///(rsc)/./app/api/scraper/run-pipeline/route.ts:87:44)
+    at Array.forEach (<anonymous>)
+    at Socket.eval (webpack-internal:///(rsc)/./app/api/scraper/run-pipeline/route.ts:86:35)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:128:17) {
+  code: 'ERR_INVALID_STATE'
+}
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s1" does not exist`
+prisma:query SELECT 1
+prisma:error 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `26000`. Message: `ERROR: prepared statement "s0" does not exist`
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+prisma:query SELECT 1
+^C
+user@localhost:~/tiktok-miner/app$ 

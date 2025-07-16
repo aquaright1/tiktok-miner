@@ -1,0 +1,71 @@
+# Documentation Requirements
+
+-   Update relevant documentation in /docs when modifying features
+-   Keep README.md in sync with new capabilities
+-   Maintain changelog entries in CHANGELOG.md
+-   Keep track of code structure and code reference under /docs/project-structure.md
+-   Keep track of all of the common codes and functions and explain their usage under /docs/code-reference.md
+# DB changes
+1. Please dont run any thing that could delete data from db!
+2. Never ever try to reset the db! `bun prisma migrate reset --force` or any force reset command is your enemy!
+3. Backup db before running any major changes on db. `bun run cli backup-db`
+
+# Typescript standards
+Dont use mts, just use ts.
+Dont use .js import! Dont do things like `import { saveResults } from '../../../lib/utils/output.js';`
+
+# Shadcn UI
+Stick with shadcn@2.1.8.
+Please use `bunx --bun shadcn@2.1.8 add xxx` to add shadcn components.
+
+# Security
+
+## Sensitive Files
+
+DO NOT read or modify:
+
+-   .env files
+-   \*_/config/secrets._
+-   \*_/_.pem
+-   Any file containing API keys, tokens, or credentials
+
+## Security Practices
+
+-   Never commit sensitive files
+-   Use environment variables for secrets
+-   Keep credentials out of logs and output
+
+# TS Runtime
+Always use bun instead of using node.
+That including running, building, testing, installing dependencies, etc.
+Dont put `"type": "module",` under package.json.
+
+# Code Quality Rules
+
+1. Test Coverage:
+   - Before attempting completion, always make sure that any code changes have test coverage
+   - Ensure all tests pass before submitting changes
+
+2. Lint Rules:
+   - Never disable any lint rules without explicit user approval
+   - If a lint rule needs to be disabled, ask the user first and explain why
+   - Prefer fixing the underlying issue over disabling the lint rule
+   - Document any approved lint rule disabling with a comment explaining the reason
+
+# Testing
+Always test the code before finishing the task.
+
+## UI Changes
+For any UI changes, please test the UI on dev server.
+Please dont always trying to fire up new server. Always assume dev server is running on localhost:3000.
+
+## Command Line Tool
+If you are making changes to the command line tool, test the command before finishing the task, use LOG_LEVEL=debug if needed. Also update [README.md](http://README.md) if needed.
+
+## DB changes
+For any operations on db, test the result on `bun run cli query-db`
+* Please dont alter the db directly by using query-db cli!*
+
+
+# Logging
+Please use logger.ts for logging.

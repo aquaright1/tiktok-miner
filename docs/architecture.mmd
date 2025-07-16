@@ -1,0 +1,49 @@
+---
+title: Shadow Bee Architecture
+---
+graph TB
+    User[User/Recruiter] --> WebUI[Web Interface]
+    User --> CLI[CLI Tools]
+    
+    subgraph Frontend
+        WebUI --> Components[UI Components]
+        Components --> Pages[Next.js Pages]
+        Pages --> APIClient[API Client]
+    end
+    
+    subgraph Backend
+        APIClient --> APIRoutes[Next.js API Routes]
+        CLI --> Services[Service Layer]
+        APIRoutes --> Services
+        Services --> GithubService[GitHub Service]
+        Services --> UserService[User Service]
+        Services --> RepoService[Repository Service]
+        Services --> EmailService[Email Service]
+        Services --> AIService[AI Service]
+        
+        GithubService --> GithubAPI[GitHub API]
+        EmailService --> EmailProtocols[Email Protocols]
+        AIService --> OpenAI[OpenAI API]
+    end
+    
+    subgraph Data
+        Services --> ORM[Prisma ORM]
+        ORM --> Database[(PostgreSQL Database)]
+        Database --> Cache[Data Cache]
+    end
+    
+    subgraph Authentication
+        WebUI --> Auth[Auth Provider]
+        APIRoutes --> Auth
+        Auth --> SupabaseAuth[Supabase Auth]
+    end
+    
+    classDef frontend fill:#f9f9f9,stroke:#333,stroke-width:1px;
+    classDef backend fill:#e6f7ff,stroke:#333,stroke-width:1px;
+    classDef data fill:#f5f5dc,stroke:#333,stroke-width:1px;
+    classDef auth fill:#fff0f5,stroke:#333,stroke-width:1px;
+    
+    class Frontend frontend;
+    class Backend backend;
+    class Data data;
+    class Authentication auth; 

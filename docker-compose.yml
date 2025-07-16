@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:14-alpine
+    container_name: tiktok-miner-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: tiktok_miner
+      POSTGRES_USER: tiktok_miner_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-tiktok_miner_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tiktok_miner_user -d tiktok_miner"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for job queues
+  redis:
+    image: redis:7-alpine
+    container_name: tiktok-miner-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass ${REDIS_PASSWORD:-redis_password}
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Main application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: postgresql://tiktok_miner_user:${DB_PASSWORD:-tiktok_miner_password}@postgres:5432/tiktok_miner
+        DIRECT_URL: postgresql://tiktok_miner_user:${DB_PASSWORD:-tiktok_miner_password}@postgres:5432/tiktok_miner
+        NODE_ENV: production
+        PORT: 3000
+    container_name: tiktok-miner-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://tiktok_miner_user:${DB_PASSWORD:-tiktok_miner_password}@postgres:5432/tiktok_miner
+      DIRECT_URL: postgresql://tiktok_miner_user:${DB_PASSWORD:-tiktok_miner_password}@postgres:5432/tiktok_miner
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_password}@redis:6379
+      NODE_ENV: production
+      PORT: 3000
+      # API Keys - set these in .env file
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      PERPLEXITY_API_KEY: ${PERPLEXITY_API_KEY}
+      # Social Media APIs
+      INSTAGRAM_CLIENT_ID: ${INSTAGRAM_CLIENT_ID}
+      INSTAGRAM_CLIENT_SECRET: ${INSTAGRAM_CLIENT_SECRET}
+      TIKTOK_CLIENT_KEY: ${TIKTOK_CLIENT_KEY}
+      TIKTOK_CLIENT_SECRET: ${TIKTOK_CLIENT_SECRET}
+      TWITTER_BEARER_TOKEN: ${TWITTER_BEARER_TOKEN}
+      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
+      # Email settings
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - app_uploads:/app/uploads
+
+  # Discovery pipeline worker
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tiktok-miner-worker
+    restart: unless-stopped
+    command: ["bun", "run", "worker"]
+    environment:
+      DATABASE_URL: postgresql://tiktok_miner_user:${DB_PASSWORD:-tiktok_miner_password}@postgres:5432/tiktok_miner
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_password}@redis:6379
+      NODE_ENV: production
+      # Copy all API keys from app service
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      PERPLEXITY_API_KEY: ${PERPLEXITY_API_KEY}
+      INSTAGRAM_CLIENT_ID: ${INSTAGRAM_CLIENT_ID}
+      INSTAGRAM_CLIENT_SECRET: ${INSTAGRAM_CLIENT_SECRET}
+      TIKTOK_CLIENT_KEY: ${TIKTOK_CLIENT_KEY}
+      TIKTOK_CLIENT_SECRET: ${TIKTOK_CLIENT_SECRET}
+      TWITTER_BEARER_TOKEN: ${TWITTER_BEARER_TOKEN}
+      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # Nginx reverse proxy (optional, for production)
+  nginx:
+    image: nginx:alpine
+    container_name: tiktok-miner-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - nginx_cache:/var/cache/nginx
+    depends_on:
+      - app
+    profiles:
+      - production
+
+  # pgAdmin for database management (optional)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: tiktok-miner-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@tiktok-miner.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    profiles:
+      - development
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  app_uploads:
+    driver: local
+  nginx_cache:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  default:
+    name: tiktok-miner-network

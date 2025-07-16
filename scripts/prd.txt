@@ -1,0 +1,136 @@
+# Scraper Page Feature PRD
+
+## Overview
+A new "Scraper" page that allows users to interact with Apify Instagram and TikTok APIs to search for creators using keywords. The page will be positioned to the right of the existing creators page in the navigation and provide functionality to scrape profiles, display results, and selectively add scraped profiles to the main creators dashboard.
+
+## Core Features
+
+### 1. Scraper Page Navigation
+- Add "Scraper" page to the right of "Creators" in the main navigation
+- Standalone page with its own route `/scraper`
+
+### 2. Keyword Search Section
+- Input field for entering keywords (supports comma-separated list)
+- Search configuration to scrape 100 profiles from each platform (Instagram and TikTok)
+- "Scrape" button to trigger the API calls
+
+### 3. Results Display Table
+- Display scraped profiles in a table format similar to the creators table
+- Show key profile data: username, platform, followers, engagement rate, etc.
+- Table should support sorting and basic filtering
+
+### 4. Profile Selection and Transfer
+- Checkbox selection for individual profiles in the results table
+- Bulk select/deselect functionality
+- "Add to Dashboard" button to transfer selected profiles to the main creators database
+- "Remove" button to delete selected profiles from the scraper results
+
+## User Experience
+
+### User Personas
+- Content managers who need to discover new creators
+- Marketing teams researching influencers by topic/keyword
+- Users who want to expand their creator database with targeted searches
+
+### Key User Flows
+1. Navigate to Scraper page
+2. Enter keywords in search field
+3. Click "Scrape" button to fetch 100 profiles from each platform
+4. Review results in table format
+5. Select desired profiles using checkboxes
+6. Add selected profiles to main dashboard or remove unwanted ones
+
+### UI/UX Considerations
+- Consistent design language with existing creators page
+- Loading states during scraping operations
+- Clear feedback on scraping progress and results
+- Intuitive selection interface with visual feedback
+
+## Technical Architecture
+
+### System Components
+- New `/scraper` page route in Next.js app router
+- React components for search interface, results table, and selection controls
+- API routes for Apify integration (`/api/scraper/instagram`, `/api/scraper/tiktok`)
+- Database operations for storing scraped results and transferring to main creators table
+
+### Data Models
+- Temporary scraper results storage (in-memory or temp database table)
+- Mapping scraped data to existing creator schema
+- Tracking scrape sessions and results
+
+### APIs and Integrations
+- Apify Instagram API integration for keyword-based profile scraping
+- Apify TikTok API integration for keyword-based profile scraping
+- Internal API endpoints for managing scraped data
+
+### Infrastructure Requirements
+- Leverage existing Apify API key configuration
+- Use existing database connection for data transfer
+- Maintain existing authentication and session management
+
+## Development Roadmap
+
+### MVP Requirements
+- Basic scraper page with keyword input and scrape button
+- Integration with Apify APIs for Instagram and TikTok
+- Results table displaying scraped profiles
+- Profile selection and transfer functionality to main dashboard
+
+### Future Enhancements
+- Advanced search filters (follower count ranges, engagement rate thresholds)
+- Scraping history and saved searches
+- Bulk operations and batch processing
+- Export functionality for scraped results
+
+## Logical Dependency Chain
+
+### Phase 1: Foundation (Backend API)
+- Create API routes for Apify Instagram and TikTok integration
+- Implement keyword-based scraping functionality
+- Set up data models for scraped results
+
+### Phase 2: Frontend Interface
+- Create scraper page component and route
+- Build keyword search interface
+- Implement results display table
+
+### Phase 3: Selection and Transfer
+- Add profile selection functionality
+- Implement transfer mechanism to main creators database
+- Add remove/delete functionality for scraped results
+
+### Phase 4: Integration and Polish
+- Integrate with existing navigation
+- Add loading states and error handling
+- Ensure consistent styling with existing pages
+
+## Risks and Mitigations
+
+### Technical Challenges
+- **Risk**: Apify API rate limits or failures
+- **Mitigation**: Implement proper error handling and retry logic, queue management
+
+- **Risk**: Large dataset performance issues
+- **Mitigation**: Implement pagination and virtual scrolling for results table
+
+### MVP Scope Management
+- **Risk**: Feature creep beyond basic requirements
+- **Mitigation**: Strictly adhere to specified functionality: keyword search, 100 profiles per platform, table display, selection/transfer
+
+### Resource Constraints
+- **Risk**: Complex data mapping between Apify results and existing creator schema
+- **Mitigation**: Leverage existing creator data structure and mapping utilities
+
+## Appendix
+
+### Technical Specifications
+- Use existing Apify API configuration and credentials
+- Maintain consistency with current creator table component structure
+- Ensure scraped data follows existing creator database schema
+- Implement proper TypeScript types for scraped data
+
+### Research Findings
+- Existing codebase already has Apify integration infrastructure
+- Creator table component can be reused/adapted for scraper results
+- Database schema supports the required creator profile fields
